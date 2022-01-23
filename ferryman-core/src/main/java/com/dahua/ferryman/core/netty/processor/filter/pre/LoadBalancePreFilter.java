@@ -81,10 +81,7 @@ public class LoadBalancePreFilter extends AbstractEntryProcessorFilter<LoadBalan
     }
 
     /**
-     * <B>主类名称：</B>Config<BR>
-     * <B>概要说明：</B>负载均衡前置过滤器配置<BR>
-     * @author JiFeng
-     * @since 2021年12月20日 下午4:21:54
+     * 负载均衡前置过滤器配置
      */
     @Getter
     @Setter

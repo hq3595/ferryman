@@ -69,28 +69,28 @@ public class ResponseHelper {
     /**
      * 写回响应信息方法
      */
-    public static void writeResponse(Context rapidContext) {
+    public static void writeResponse(Context ferrymanContext) {
         //	释放资源
-        rapidContext.releaseRequest();
+        ferrymanContext.releaseRequest();
 
-        if(rapidContext.isWrittened()) {
+        if(ferrymanContext.isWrittened()) {
             //	1：第一步构建响应对象，并写回数据
-            FullHttpResponse httpResponse = ResponseHelper.getHttpResponse(rapidContext, (FerrymanResponse) rapidContext.getResponse());
+            FullHttpResponse httpResponse = ResponseHelper.getHttpResponse(ferrymanContext, (FerrymanResponse) ferrymanContext.getResponse());
             //  短连接：直接关闭连接
-            if(!rapidContext.isKeepAlive()) {
-                rapidContext.getNettyCtx()
+            if(!ferrymanContext.isKeepAlive()) {
+                ferrymanContext.getNettyCtx()
                         .writeAndFlush(httpResponse).addListener(ChannelFutureListener.CLOSE);
             }
             //	长连接：保持连接
             else {
                 httpResponse.headers().set(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE);
-                rapidContext.getNettyCtx().writeAndFlush(httpResponse);
+                ferrymanContext.getNettyCtx().writeAndFlush(httpResponse);
             }
             //	2:	设置写回结束状态为： COMPLETED
-            rapidContext.completed();
+            ferrymanContext.completed();
         }
-        else if(rapidContext.isCompleted()){
-            rapidContext.invokeCompletedCallback();
+        else if(ferrymanContext.isCompleted()){
+            ferrymanContext.invokeCompletedCallback();
         }
     }
 }

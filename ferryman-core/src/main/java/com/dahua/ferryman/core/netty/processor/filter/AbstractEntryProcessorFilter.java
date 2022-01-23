@@ -41,12 +41,7 @@ public abstract class AbstractEntryProcessorFilter <FilterConfigClass> extends A
     }
 
     /**
-     * <B>方法名称：</B>dynamicLoadCache<BR>
-     * <B>概要说明：</B>动态加载缓存：每一个过滤器的具体配置规则<BR>
-     * @author JiFeng
-     * @since 2021年12月16日 下午11:40:51
-     * @param ctx
-     * @param args
+     * 动态加载缓存：每一个过滤器的具体配置规则
      */
     private FilterConfigClass dynamicLoadCache(Context ctx, Object[] args) {
         //	通过上下文对象拿到规则，再通过规则获取到指定filterId的FilterConfig

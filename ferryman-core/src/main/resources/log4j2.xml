@@ -6,7 +6,7 @@
     <Properties>
         <!-- 	配置日志文件输出目录,此处为项目根目录下的logs文件夹 	MDC%X   %X{logInfo} %l -->
         <Property name="LOG_HOME">logs</Property>
-        <property name="FILE_NAME">rapid-core</property>
+        <property name="FILE_NAME">ferryman-core</property>
         <property name="traceLayout">%m%n</property>
         <property name="patternLayout">[%d{yyyy-MM-dd'T'HH:mm:ss.SSSZZ}] [%level{length=5}] [%thread-%tid] [%logger] [%X{hostName}] [%X{ip}] [%X{applicationName}] [%X{traceId}] [%X{spanId}] [%F,%L,%C,%M] [%m] ## '%ex'%n</property>
         <!--
