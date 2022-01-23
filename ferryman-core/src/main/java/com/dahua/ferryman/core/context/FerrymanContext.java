@@ -3,7 +3,6 @@ package com.dahua.ferryman.core.context;
 import com.dahua.ferryman.common.config.Rule;
 import com.dahua.ferryman.common.utils.AssertUtil;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.util.AttributeKey;
 import io.netty.util.ReferenceCountUtil;
 
 /**

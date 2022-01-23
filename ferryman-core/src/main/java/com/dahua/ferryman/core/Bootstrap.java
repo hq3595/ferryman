@@ -31,12 +31,7 @@ public class Bootstrap {
         GatewayContainer gatewayContainer = new GatewayContainer(ferrymanConfig);
         gatewayContainer.start();
 
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            @Override
-            public void run() {
-                gatewayContainer.shutdown();
-            }
-        }));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> gatewayContainer.shutdown()));
     }
 
 }
