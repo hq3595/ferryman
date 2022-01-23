@@ -1,6 +1,6 @@
 package com.dahua.ferryman.core.netty.processor;
 
-import com.dahua.ferryman.common.context.HttpRequestWrapper;
+import com.dahua.ferryman.core.context.HttpRequestWrapper;
 
 /**
  * @Author: HuangQiang

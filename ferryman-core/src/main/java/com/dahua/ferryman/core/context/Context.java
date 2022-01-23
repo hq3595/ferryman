@@ -1,5 +1,6 @@
-package com.dahua.ferryman.common.context;
+package com.dahua.ferryman.core.context;
 
+import com.dahua.ferryman.common.config.Rule;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;
 
@@ -63,7 +64,7 @@ public interface Context {
     /**
      * 获取规则
      */
-    Object getRule();
+    Rule getRule();
 
     /**
      * 获取请求对象

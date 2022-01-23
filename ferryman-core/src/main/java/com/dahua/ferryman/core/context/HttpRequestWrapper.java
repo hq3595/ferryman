@@ -1,4 +1,4 @@
-package com.dahua.ferryman.common.context;
+package com.dahua.ferryman.core.context;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.FullHttpRequest;
