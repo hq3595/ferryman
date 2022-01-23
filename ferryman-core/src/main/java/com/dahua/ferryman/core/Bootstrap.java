@@ -2,6 +2,7 @@ package com.dahua.ferryman.core;
 
 import com.dahua.ferryman.core.config.ConfigLoader;
 import com.dahua.ferryman.core.config.FerrymanConfig;
+import com.dahua.ferryman.core.container.GatewayContainer;
 
 /**
  * @Author: HuangQiang
@@ -14,7 +15,16 @@ public class Bootstrap {
         //  1. 加载网关配置信息
         FerrymanConfig ferrymanConfig = ConfigLoader.getInstance().loadConfig(args);
 
+        //  启动容器
+        GatewayContainer gatewayContainer = new GatewayContainer(ferrymanConfig);
+        gatewayContainer.start();
 
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                gatewayContainer.shutdown();
+            }
+        }));
     }
 
 }

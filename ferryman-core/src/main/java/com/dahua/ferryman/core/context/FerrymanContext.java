@@ -13,7 +13,6 @@ import io.netty.util.ReferenceCountUtil;
  */
 public class FerrymanContext extends BasicContext{
 
-
     private final FerrymanRequest ferrymanRequest;
 
     private final Rule rule;
