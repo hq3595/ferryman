@@ -1,8 +1,6 @@
 package com.dahua.ferryman.core.context;
 
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.util.AttributeKey;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +25,7 @@ public abstract class BasicContext implements Context {
     protected volatile int status = Context.RUNNING;
 
     //	保存所有的上下文参数集合
-    protected final Map<AttributeKey<?>, Object> attributes = new HashMap<AttributeKey<?>, Object>();
+    protected final Map<AttributeKey<?>, Object> attributes = new HashMap<>();
 
     //	在请求过程中出现异常则设置异常对象
     protected Throwable throwable;
@@ -140,5 +138,4 @@ public abstract class BasicContext implements Context {
             completedCallbacks.forEach(call -> call.accept(this));
         }
     }
-
 }

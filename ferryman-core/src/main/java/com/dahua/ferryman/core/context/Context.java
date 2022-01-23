@@ -2,7 +2,6 @@ package com.dahua.ferryman.core.context;
 
 import com.dahua.ferryman.common.config.Rule;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.util.AttributeKey;
 
 import java.util.function.Consumer;
 

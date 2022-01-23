@@ -22,4 +22,8 @@ public interface BasicConst {
 
     String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
+    String UNIQUE_ID = "uniqueId";
+
+    int DEFAULT_WEIGHT = 100;
+
 }
