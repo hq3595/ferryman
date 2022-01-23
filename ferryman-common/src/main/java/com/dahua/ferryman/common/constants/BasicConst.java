@@ -10,6 +10,8 @@ public interface BasicConst {
 
     String PATH_SEPARATOR = "/";
 
+    String DOLLAR_SEPARATOR = "$";
+
     String BLANK_SEPARATOR_1 = "";
 
     String BAR_SEPARATOR = "-";
