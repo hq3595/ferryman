@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.dahua</groupId>
+        <artifactId>ferryman</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>ferryman-discovery</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>ferryman-discovery-api</module>
+        <module>ferryman-discovery-etcd</module>
+    </modules>
+
+    <properties>
+        <ferryman-commonn.version>1.0.0</ferryman-commonn.version>
+        <jetcd-core.version>0.5.4</jetcd-core.version>
+        <lombok.version>1.18.0</lombok.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.dahua</groupId>
+                <artifactId>ferryman-common</artifactId>
+                <version>${ferryman-commonn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.etcd</groupId>
+                <artifactId>jetcd-core</artifactId>
+                <version>${jetcd-core.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

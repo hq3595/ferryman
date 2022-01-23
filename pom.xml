@@ -178,6 +178,7 @@
     <modules>
         <module>ferryman-core</module>
         <module>ferryman-common</module>
+        <module>ferryman-discovery</module>
     </modules>
 
     <build>

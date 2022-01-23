@@ -72,7 +72,7 @@ public class FerrymanContext extends BasicContext{
         public FerrymanContext build() {
             AssertUtil.notNull(protocol, "protocol不能为空");
             AssertUtil.notNull(nettyCtx, "nettyCtx不能为空");
-            AssertUtil.notNull(ferrymanRequest, "rapidRequest不能为空");
+            AssertUtil.notNull(ferrymanRequest, "request不能为空");
             AssertUtil.notNull(rule, "rule不能为空");
             return new FerrymanContext(protocol, nettyCtx, keepAlive, ferrymanRequest, rule);
         }

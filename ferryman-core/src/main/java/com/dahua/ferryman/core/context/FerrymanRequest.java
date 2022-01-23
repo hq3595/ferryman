@@ -108,7 +108,7 @@ public class FerrymanRequest implements FerrymanRequestMutable{
      */
     private Map<String, List<String>> postParameters;
 
-    /***************** RapidRequestMutable:可修改的请求变量 	**********************/
+    /***************** FerrymanRequestMutable:可修改的请求变量 	**********************/
 
     /**
      * 	可修改的scheme：默认为 http://
@@ -130,18 +130,6 @@ public class FerrymanRequest implements FerrymanRequestMutable{
      */
     private final RequestBuilder requestBuilder;
 
-    /**
-     * <B>构造方法</B>RapidRequest<BR>
-     * @param uniqueId
-     * @param charset
-     * @param clientIp
-     * @param host
-     * @param uri
-     * @param method
-     * @param contentType
-     * @param headers
-     * @param fullHttpRequest
-     */
     public FerrymanRequest(String uniqueId, Charset charset, String clientIp, String host,
                         String uri, HttpMethod method, String contentType, HttpHeaders headers, FullHttpRequest fullHttpRequest) {
         this.uniqueId = uniqueId;
@@ -235,7 +223,7 @@ public class FerrymanRequest implements FerrymanRequestMutable{
                 return Lists.newArrayList(JsonPath.read(body, name).toString());
             } catch (Exception e) {
                 //	ignore
-                log.error("#RapidRequest# getPostParametersMultiple JsonPath解析失败，jsonPath: {}, body: {}", name, body, e);
+                log.error("#FerrymanRequest# getPostParametersMultiple JsonPath解析失败，jsonPath: {}, body: {}", name, body, e);
             }
         }
         return null;

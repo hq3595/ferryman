@@ -10,6 +10,8 @@
     <properties>
         <ferryman-commonn.version>1.0.0</ferryman-commonn.version>
         <zookeeper.version>3.4.11</zookeeper.version>
+        <ferryman-discovery-api.version>1.0.0</ferryman-discovery-api.version>
+        <ferryman-discovery-etcd.version>1.0.0</ferryman-discovery-etcd.version>
     </properties>
 
     <dependencies>
@@ -44,6 +46,18 @@
             </exclusions>
         </dependency>
 
+        <!-- 注册中心 -->
+        <dependency>
+            <groupId>com.dahua</groupId>
+            <artifactId>ferryman-discovery-api</artifactId>
+            <version>${ferryman-discovery-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dahua</groupId>
+            <artifactId>ferryman-discovery-etcd</artifactId>
+            <version>${ferryman-discovery-etcd.version}</version>
+        </dependency>
+
         <!--disruptor-->
         <dependency>
             <groupId>com.lmax</groupId>
@@ -58,7 +72,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.ruyuan.rapid.core.Bootstrap</mainClass>
+                            <mainClass>com.dahua.ferryman.core.Bootstrap</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
