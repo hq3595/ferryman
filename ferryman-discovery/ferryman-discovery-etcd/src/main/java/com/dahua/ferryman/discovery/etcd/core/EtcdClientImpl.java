@@ -27,6 +27,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * @Author: HuangQiang
  * @Date: 2022/1/23 下午2:29
+ * ETCD客户端封装
  */
 @Slf4j
 public class EtcdClientImpl implements EtcdClient {
