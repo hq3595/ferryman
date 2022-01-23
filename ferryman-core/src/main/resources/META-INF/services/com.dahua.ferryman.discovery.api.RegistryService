@@ -1,0 +1,2 @@
+## 	注册中心的实现类
+com.dahua.ferryman.discovery.etcd.service.RegistryServiceEtcdImpl
