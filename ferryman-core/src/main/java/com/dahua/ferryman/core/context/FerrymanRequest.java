@@ -159,11 +159,7 @@ public class FerrymanRequest implements FerrymanRequestMutable{
     }
 
     /**
-     * <B>方法名称：</B>getBody<BR>
-     * <B>概要说明：</B>获取body信息<BR>
-     * @author JiFeng
-     * @since 2021年12月9日 下午1:14:21
-     * @return
+     * 获取body信息
      */
     public String getBody() {
         if(StringUtils.isEmpty(body)) {
@@ -173,12 +169,7 @@ public class FerrymanRequest implements FerrymanRequestMutable{
     }
 
     /**
-     * <B>方法名称：</B>getCookie<BR>
-     * <B>概要说明：</B>获取指定的cookie<BR>
-     * @author JiFeng
-     * @since 2021年12月9日 下午1:17:32
-     * @param name
-     * @return Cookie
+     * 获取指定的cookie
      */
     public Cookie getCookie(String name) {
         if(cookieMap == null) {
@@ -193,12 +184,7 @@ public class FerrymanRequest implements FerrymanRequestMutable{
     }
 
     /**
-     * <B>方法名称：</B>getQueryParametersMultiple<BR>
-     * <B>概要说明：</B>获取指定名称的参数值<BR>
-     * @author JiFeng
-     * @since 2021年12月9日 下午1:19:03
-     * @param name
-     * @return
+     * 获取指定名称的参数值
      */
     public List<String> getQueryParametersMultiple(String name){
         return queryDecoder.parameters().get(name);
