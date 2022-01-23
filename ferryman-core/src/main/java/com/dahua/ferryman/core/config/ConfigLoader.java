@@ -28,7 +28,7 @@ public class ConfigLoader {
     private ConfigLoader(){}
 
     private static class Holder{
-        private static ConfigLoader INSTANCE = new ConfigLoader();
+        private static final ConfigLoader INSTANCE = new ConfigLoader();
     }
 
     public static ConfigLoader getInstance(){
@@ -36,7 +36,7 @@ public class ConfigLoader {
     }
 
     public FerrymanConfig getFerrymanConfig(){
-        return this.ferrymanConfig;
+        return ferrymanConfig;
     }
 
     public FerrymanConfig loadConfig(String[] args){
