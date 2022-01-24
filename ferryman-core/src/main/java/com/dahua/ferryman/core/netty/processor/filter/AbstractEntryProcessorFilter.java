@@ -31,7 +31,8 @@ public abstract class AbstractEntryProcessorFilter <FilterConfigClass> extends A
 
     @Override
     public boolean check(Context ctx) throws Throwable {
-        return ctx.getRule().hashId(filterAnnotation.id());
+        boolean result = ctx.getRule().hashId(filterAnnotation.id());
+        return result;
     }
 
     @Override

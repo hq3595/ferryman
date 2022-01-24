@@ -21,7 +21,7 @@ public class FerrymanConfig {
     private String gatewayId = NetUtils.getLocalIp() + BasicConst.COLON_SEPARATOR + port;
 
     //	网关的注册中心地址
-    private String registryAddress = "http://192.168.1.110:2379,http://192.168.1.111:2379,http://192.168.1.112:2379";
+    private String registryAddress = "";
 
     //	网关的命名空间
     private String namespace = "ferryman";

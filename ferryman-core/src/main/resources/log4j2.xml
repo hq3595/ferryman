@@ -40,8 +40,8 @@
         </Logger>
 
         <Root level="info">
-<!--            <Appender-Ref ref="CONSOLE"/>-->
-            <Appender-Ref ref="RandomAccessFile"/>
+            <Appender-Ref ref="CONSOLE"/>
+<!--            <Appender-Ref ref="RandomAccessFile"/>-->
         </Root>
     </Loggers>
 </Configuration>

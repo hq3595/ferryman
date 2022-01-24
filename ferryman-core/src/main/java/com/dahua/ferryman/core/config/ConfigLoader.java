@@ -41,6 +41,8 @@ public class ConfigLoader {
 
     public FerrymanConfig loadConfig(String[] args){
 
+        log.info("#ConfigLoader# load config begin");
+
         //  1. 加载文件
         {
             InputStream is = ConfigLoader.class.getClassLoader().getResourceAsStream(CONFIG_FILE);
@@ -86,6 +88,8 @@ public class ConfigLoader {
             }
             PropertiesUtils.properties2Object(properties, ferrymanConfig);
         }
+
+        log.info("#ConfigLoader# load config end");
 
         return ferrymanConfig;
     }

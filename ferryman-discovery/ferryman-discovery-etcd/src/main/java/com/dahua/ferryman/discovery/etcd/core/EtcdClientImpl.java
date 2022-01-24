@@ -115,7 +115,7 @@ public class EtcdClientImpl implements EtcdClient {
                         //	onNext：确定下一次租约续约时间后触发
                         @Override
                         public void onNext(LeaseKeepAliveResponse value) {
-							log.info("#EtcdClientImpl.keepAliveSingleLease# onNext, leaseId: {} ttl: {} !", value.getID(), value.getTTL());
+//							log.info("#EtcdClientImpl.keepAliveSingleLease# onNext, leaseId: {} ttl: {} !", value.getID(), value.getTTL());
                         }
 
                         //	onError：续约异常时触发

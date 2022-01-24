@@ -50,6 +50,9 @@ public class RegistryManager {
     private CountDownLatch countDownLatch = new CountDownLatch(1);
 
     public void initialized(FerrymanConfig ferrymanConfig) throws Exception {
+
+        log.info("#RegistryManager# initialized begin ========");
+
         this.ferrymanConfig = ferrymanConfig;
         //	1. 路径的设置
         superPath = Registry.PATH + ferrymanConfig.getNamespace() + BasicConst.BAR_SEPARATOR + ferrymanConfig.getEnv();
@@ -74,6 +77,8 @@ public class RegistryManager {
         //	5.注册自身服务
         RegistryServer registryServer = new RegistryServer(registryService);
         registryServer.registerSelf();
+
+        log.info("#RegistryManager# initialized end ========");
 
     }
 
@@ -179,6 +184,7 @@ public class RegistryManager {
 
         @Override
         public void put(String key, String value) throws Exception {
+            log.info("#ServiceListener# put,key:{},value:{}",key,value);
             countDownLatch.await();
             if(servicesPath.equals(key) ||
                     instancesPath.equals(key) ||
@@ -219,6 +225,9 @@ public class RegistryManager {
 
         @Override
         public void delete(String key) throws Exception {
+
+            log.info("#ServiceListener# put,delete:{}",key);
+
             countDownLatch.await();
 
             if(servicesPath.equals(key) ||

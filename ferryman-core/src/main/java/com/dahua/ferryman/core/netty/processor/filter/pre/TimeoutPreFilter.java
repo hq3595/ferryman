@@ -1,11 +1,14 @@
 package com.dahua.ferryman.core.netty.processor.filter.pre;
 
+import com.dahua.ferryman.common.constants.ProcessorFilterConstants;
 import com.dahua.ferryman.common.constants.Protocol;
 import com.dahua.ferryman.core.context.Context;
 import com.dahua.ferryman.core.context.FerrymanContext;
 import com.dahua.ferryman.core.context.FerrymanRequest;
 import com.dahua.ferryman.core.netty.processor.filter.AbstractEntryProcessorFilter;
+import com.dahua.ferryman.core.netty.processor.filter.Filter;
 import com.dahua.ferryman.core.netty.processor.filter.FilterConfig;
+import com.dahua.ferryman.core.netty.processor.filter.ProcessorFilterType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +16,12 @@ import lombok.Setter;
  * @Author: HuangQiang
  * @Date: 2022/1/23 下午6:19
  */
+@Filter(
+        id = ProcessorFilterConstants.TIMEOUT_PRE_FILTER_ID,
+        name = ProcessorFilterConstants.TIMEOUT_PRE_FILTER_NAME,
+        value = ProcessorFilterType.PRE,
+        order = ProcessorFilterConstants.TIMEOUT_PRE_FILTER_ORDER
+)
 public class TimeoutPreFilter extends AbstractEntryProcessorFilter<TimeoutPreFilter.Config> {
 
     public TimeoutPreFilter() {

@@ -6,6 +6,7 @@ import com.dahua.ferryman.core.config.FerrymanConfig;
 import com.dahua.ferryman.core.lifecycle.LifeCycle;
 import com.dahua.ferryman.core.netty.processor.NettyProcessor;
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
 import io.netty.channel.epoll.Epoll;
 import io.netty.channel.epoll.EpollEventLoopGroup;
@@ -74,7 +75,7 @@ public class NettyHttpServer implements LifeCycle {
                 .channel(useEPoll() ? EpollServerSocketChannel.class : NioServerSocketChannel.class)
                 .option(ChannelOption.SO_BACKLOG, 1024)
                 .option(ChannelOption.SO_REUSEADDR, true)
-                .option(ChannelOption.SO_KEEPALIVE, false)
+                .childOption(ChannelOption.SO_KEEPALIVE, false)
                 .childOption(ChannelOption.TCP_NODELAY, true)
                 .childOption(ChannelOption.SO_SNDBUF, 65535)
                 .childOption(ChannelOption.SO_RCVBUF, 65535)
@@ -92,6 +93,16 @@ public class NettyHttpServer implements LifeCycle {
                         );
                     }
                 });
+        if(ferrymanConfig.isNettyAllocator()){
+            handler.childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
+        }
+
+        try{
+            this.serverBootstrap.bind().sync();
+            log.info("< ============= Ferryman Server StartUp On Port: " + this.port + "================ >");
+        }catch (Exception e){
+            throw new RuntimeException("this.serverBootstrap.bind().sync() fail!", e);
+        }
     }
 
     @Override

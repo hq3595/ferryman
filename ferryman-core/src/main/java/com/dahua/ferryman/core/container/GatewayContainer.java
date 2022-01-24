@@ -30,21 +30,24 @@ public class GatewayContainer implements LifeCycle {
 
     @Override
     public void init() {
-        //	1. 构建核心处理器
-        NettyCoreProcessor nettyCoreProcessor = new NettyCoreProcessor();
 
-        //	2. 核心处理器
-        nettyProcessor = nettyCoreProcessor;
+        log.info("#GatewayContainer# init begin ");
 
-        //	3. 创建NettyhttpServer
+        //	核心处理器
+        nettyProcessor = new NettyCoreProcessor();
+
+        //	创建 NettyHttpServer
         nettyHttpServer = new NettyHttpServer(ferrymanConfig, nettyProcessor);
 
-        //	4. 创建NettyHttpClient
+        //	创建NettyHttpClient
         nettyHttpClient = new NettyHttpClient(ferrymanConfig, nettyHttpServer.getEventLoopGroupWork());
+
+        log.info("#GatewayContainer# init end ");
     }
 
     @Override
     public void start() {
+        log.info("#GatewayContainer# start ");
         nettyProcessor.start();
         nettyHttpServer.start();
         nettyHttpClient.start();
@@ -52,6 +55,7 @@ public class GatewayContainer implements LifeCycle {
 
     @Override
     public void shutdown() {
+        log.info("#GatewayContainer# shutdown ");
         nettyProcessor.shutdown();
         nettyHttpServer.shutdown();
         nettyHttpClient.shutdown();
