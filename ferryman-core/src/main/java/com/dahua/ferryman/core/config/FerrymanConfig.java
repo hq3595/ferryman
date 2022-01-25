@@ -51,7 +51,7 @@ public class FerrymanConfig {
     private boolean whenComplete = true;
 
     //	网关队列配置：缓冲模式；
-    private String bufferType = BufferHelper.MPMC; // BufferHelper.FLUSHER;
+    private String bufferType = BufferHelper.FLUSHER; // BufferHelper.FLUSHER;
 
     //	网关队列：内存队列大小
     private int bufferSize = 1024 * 16;

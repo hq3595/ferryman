@@ -1,9 +1,11 @@
 package com.dahua.ferryman.core.container;
 
+import com.dahua.ferryman.common.constants.BufferHelper;
 import com.dahua.ferryman.core.config.FerrymanConfig;
 import com.dahua.ferryman.core.lifecycle.LifeCycle;
 import com.dahua.ferryman.core.netty.NettyHttpClient;
 import com.dahua.ferryman.core.netty.NettyHttpServer;
+import com.dahua.ferryman.core.netty.processor.NettyBatchEventProcessor;
 import com.dahua.ferryman.core.netty.processor.NettyCoreProcessor;
 import com.dahua.ferryman.core.netty.processor.NettyProcessor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +36,13 @@ public class GatewayContainer implements LifeCycle {
         log.info("#GatewayContainer# init begin ");
 
         //	核心处理器
-        nettyProcessor = new NettyCoreProcessor();
+        NettyCoreProcessor nettyCoreProcessor = new NettyCoreProcessor();
+        String bufferType = ferrymanConfig.getBufferType();
+        if(BufferHelper.isFlusher(bufferType)){
+            nettyProcessor = new NettyBatchEventProcessor(ferrymanConfig, nettyCoreProcessor);
+        }else{
+            nettyProcessor = nettyCoreProcessor;
+        }
 
         //	创建 NettyHttpServer
         nettyHttpServer = new NettyHttpServer(ferrymanConfig, nettyProcessor);

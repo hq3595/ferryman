@@ -11,6 +11,8 @@ public interface BufferHelper {
 
     String MPMC = "MPMC";
 
+    String NONE = "NONE";
+
     static boolean isMpmc(String bufferType) {
         return MPMC.equals(bufferType);
     }
