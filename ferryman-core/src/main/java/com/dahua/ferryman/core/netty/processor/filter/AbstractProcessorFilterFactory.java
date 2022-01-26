@@ -75,7 +75,7 @@ public abstract class AbstractProcessorFilterFactory implements ProcessorFilterF
 
             //	映射到过滤器集合
             String filterId = annotation.id();
-            if(filterId == null || filterId.length() < 1) {
+            if(filterId.length() < 1) {
                 filterId = processorFilter.getClass().getName();
             }
             String code = annotation.value().getCode();
@@ -97,7 +97,7 @@ public abstract class AbstractProcessorFilterFactory implements ProcessorFilterF
         Filter annotation = t.getAnnotation(Filter.class);
         if(annotation != null) {
             String filterId = annotation.id();
-            if(filterId == null || filterId.length() < 1) {
+            if(filterId.length() < 1) {
                 filterId = t.getName();
             }
             return this.getFilter(filterId);

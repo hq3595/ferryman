@@ -18,10 +18,12 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.HttpServerExpectContinueHandler;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
+import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.DefaultThreadFactory;
 import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetSocketAddress;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: HuangQiang
@@ -75,7 +77,7 @@ public class NettyHttpServer implements LifeCycle {
                 .channel(useEPoll() ? EpollServerSocketChannel.class : NioServerSocketChannel.class)
                 .option(ChannelOption.SO_BACKLOG, 1024)
                 .option(ChannelOption.SO_REUSEADDR, true)
-                .childOption(ChannelOption.SO_KEEPALIVE, false)
+                .childOption(ChannelOption.SO_KEEPALIVE,false)
                 .childOption(ChannelOption.TCP_NODELAY, true)
                 .childOption(ChannelOption.SO_SNDBUF, 65535)
                 .childOption(ChannelOption.SO_RCVBUF, 65535)
@@ -86,6 +88,7 @@ public class NettyHttpServer implements LifeCycle {
                     protected void initChannel(Channel ch) throws Exception {
                         ch.pipeline().addLast(
                           new HttpServerCodec(),
+                          new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS),
                           new HttpObjectAggregator(ferrymanConfig.getMaxContentLength()),
                           new HttpServerExpectContinueHandler(),
                           new NettyServerConnectManagerHandler(),

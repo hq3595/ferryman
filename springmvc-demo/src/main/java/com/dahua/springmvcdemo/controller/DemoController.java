@@ -26,11 +26,17 @@ public class DemoController {
     @PostMapping("/testPost")
     public String testPost() {
         count++;
-        if(count >= 1e5) {
+        if(count >= 5) {
             System.err.println("<------ ferryman: ------>");
             count = 0;
         }
-        return "ferryman";
+        throw new RuntimeException();
+//        try{
+//            Thread.sleep(5000);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return "ferryman";
     }
 
     @FerrymanInvoker(path = "/testParam")

@@ -94,6 +94,7 @@ public class HttpRouteFilter extends AbstractEntryProcessorFilter<FilterConfig> 
             else {
                 //	设置响应信息
                 ferrymanContext.setResponse(FerrymanResponse.buildResponse(response));
+                //	正常返回，设置写回标记
             }
 
         } catch (Throwable t) {
@@ -102,10 +103,8 @@ public class HttpRouteFilter extends AbstractEntryProcessorFilter<FilterConfig> 
             log.error("#HttpRouteFilter# complete catch到未知异常", t);
         } finally {
             try {
-                //	1.	设置写回标记
+                // 	让异步线程内部自己进行触发下一个节点执行
                 ferrymanContext.writtened();
-
-                //	2. 	让异步线程内部自己进行触发下一个节点执行
                 super.filterNext(ferrymanContext, args);
             } catch (Throwable t) {
                 //	兜底处理，把异常信息放入上下文
